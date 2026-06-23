@@ -6,7 +6,7 @@ window.BIRTHDAY_PAGE = {
   letterBody:
     "陈衍锡，生日快乐！愿新一岁平安顺遂，万事舒心，日子明朗，步步顺心✨ 愿你走到哪里都有明亮的方向，忙的时候有人惦记，闲的时候心里松快。愿每一个普通日子，都慢慢变成值得记住的好日子。",
   coverImage: "./assets/birthday.jpg",
-  musicUrl: "",
+  musicUrl: "./assets/birthday-melody.wav",
   wishCards: [
     {
       title: "平安顺遂",

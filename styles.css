@@ -351,6 +351,7 @@ h1 {
 }
 
 .wish-wall {
+  position: relative;
   min-height: 74svh;
   display: grid;
   align-content: center;
@@ -359,6 +360,42 @@ h1 {
   background:
     radial-gradient(circle at 50% 40%, rgba(255, 111, 134, 0.2), transparent 34%),
     #080606;
+  overflow: hidden;
+}
+
+.wish-wall > :not(.wish-layer) {
+  position: relative;
+  z-index: 2;
+}
+
+.wish-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wish-layer::before,
+.wish-layer::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(245, 193, 95, 0.42);
+  border-radius: 50%;
+  opacity: 0;
+  content: "";
+  transform: translate(-50%, -50%) scale(0.2);
+}
+
+.wish-layer.is-lit::before {
+  animation: wishRing 3.8s ease-out forwards;
+}
+
+.wish-layer.is-lit::after {
+  animation: wishRing 3.8s 0.35s ease-out forwards;
 }
 
 .wish-result {
@@ -367,6 +404,34 @@ h1 {
   color: #fff2c9;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(20px, 3vw, 34px);
+  transition:
+    color 300ms ease,
+    text-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.wish-result.is-lit {
+  color: #fff6d5;
+  text-shadow:
+    0 0 18px rgba(245, 193, 95, 0.62),
+    0 0 42px rgba(255, 111, 134, 0.36);
+  animation: wishTextGlow 4.2s ease-out;
+}
+
+.wish-star {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: wishStarFly var(--duration) var(--delay) cubic-bezier(0.16, 0.84, 0.25, 1) forwards;
+}
+
+.wish-star.is-large {
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 18px currentColor;
 }
 
 .spark {
@@ -388,6 +453,59 @@ h1 {
   to {
     opacity: 0;
     transform: translate(var(--x), -130px) scale(0.36);
+  }
+}
+
+@keyframes wishRing {
+  0% {
+    opacity: 0.86;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+
+  80% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8.5);
+  }
+}
+
+@keyframes wishStarFly {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  72% {
+    opacity: 0.88;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0.2);
+  }
+}
+
+@keyframes wishTextGlow {
+  0% {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+
+  16% {
+    transform: translateY(0) scale(1.03);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
   }
 }
 
