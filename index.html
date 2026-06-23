@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>陈衍锡生日快乐</title>
+  <meta name="description" content="陈衍锡的定制生日祝福网页。">
+  <link rel="preload" href="./assets/birthday.jpg" as="image">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <button class="music-btn" type="button" aria-label="播放生日音乐">
+    <span></span>
+  </button>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="grain" aria-hidden="true"></div>
+      <div class="hero-photo">
+        <img data-config-img="coverImage" alt="生日祝福封面">
+      </div>
+      <div class="hero-copy">
+        <p class="date" data-config-text="dateText"></p>
+        <h1><span data-config-text="name"></span><br>生日快乐</h1>
+        <p class="letter" data-config-text="opening"></p>
+        <button class="open-letter" type="button">打开今天的祝福</button>
+      </div>
+      <div class="floating-note" aria-hidden="true">May every day be bright.</div>
+    </section>
+
+    <section class="secret-letter" aria-label="生日祝福信">
+      <div class="letter-shell">
+        <p class="label">For Chen Yanxi</p>
+        <h2 data-config-text="letterTitle"></h2>
+        <p class="typed" data-typed></p>
+      </div>
+    </section>
+
+    <section class="memory-strip" aria-label="生日祝福关键词">
+      <div class="section-title">
+        <p>Birthday Wishes</p>
+        <h2>把祝福拆成四束光</h2>
+      </div>
+      <div class="film-roll" data-gallery></div>
+    </section>
+
+    <section class="timeline" aria-label="新一岁祝福">
+      <div class="section-title">
+        <p>New Chapter</p>
+        <h2>新一岁的好运时间线</h2>
+      </div>
+      <div class="timeline-list" data-timeline></div>
+    </section>
+
+    <section class="wish-wall" aria-label="生日愿望">
+      <div>
+        <p class="label">Midnight wish</p>
+        <h2>今晚的生日愿望，替你点亮好了。</h2>
+      </div>
+      <button class="wish-button" type="button">点亮生日愿望</button>
+      <div class="wish-result" data-wish-result></div>
+    </section>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
